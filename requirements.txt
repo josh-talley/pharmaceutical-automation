@@ -1,0 +1,7 @@
+# Core dependencies for running the code
+# Install with: pip install -r requirements.txt
+
+sqlalchemy>=2.0.0
+pandas>=2.0.0
+PyQt5>=5.15.0
+python-dateutil>=2.8.0
