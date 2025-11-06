@@ -60,7 +60,7 @@ pharmaceutical-compliance-automation/
 
 ```bash
 # Clone repository
-git clone https://github.com/josh-talley/pharmaceutical-compliance-automation.git
+git clone https://github.com/josh-talley/pharmaceutical-automation
 cd pharmaceutical-compliance-automation
 
 # Install dependencies
