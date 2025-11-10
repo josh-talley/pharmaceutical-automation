@@ -194,7 +194,8 @@ class DataValidator:
                 .distinct()
                 .outerjoin(
                     WarehouseData,
-                    TransactionData.reporting_registrant_num == WarehouseData.dea_number,
+                    TransactionData.reporting_registrant_num
+                    == WarehouseData.dea_number,
                 )
                 .filter(WarehouseData.dea_number.is_(None))
                 .all()
@@ -340,7 +341,11 @@ class DataValidator:
         - Uses pandas DataFrame for efficient date range filtering
         - Progress: 0% -> 33% (NDCs fetched) -> 66% (licenses filtered) -> 100% (validated)
         """
-        from models import TransactionData, ControlledSubstanceMaster, CustomerLicenseData
+        from models import (
+            TransactionData,
+            ControlledSubstanceMaster,
+            CustomerLicenseData,
+        )
         from exceptions import (
             CustomerLicenseValidationError,
             NoValidCustomerLicensesFoundError,
@@ -488,9 +493,8 @@ class DataValidator:
         )
 
         # Filter for valid licenses (date range check)
-        merged["is_valid"] = (
-            (merged["transaction_date"] >= merged["valid_from"])
-            & (merged["transaction_date"] <= merged["valid_to"])
+        merged["is_valid"] = (merged["transaction_date"] >= merged["valid_from"]) & (
+            merged["transaction_date"] <= merged["valid_to"]
         )
 
         # Check for missing licenses
@@ -636,8 +640,8 @@ class DataValidator:
                     errors.append("   - " + tin + "\n")
 
         if errors:
-            error_message = (
-                "Detected inconsistencies in warehouse data:\n" + "\n".join(errors)
+            error_message = "Detected inconsistencies in warehouse data:\n" + "\n".join(
+                errors
             )
             raise TINNumInconsistencyError(
                 message=error_message, user_message=error_message
@@ -699,14 +703,19 @@ class DataValidator:
 
                 # Filter for exact strength matches
                 matching_strength_data = [
-                    mme for mme in mme_data_list if mme.strength_per_unit == cs.cs_strength_mg
+                    mme
+                    for mme in mme_data_list
+                    if mme.strength_per_unit == cs.cs_strength_mg
                 ]
 
                 if not mme_data_list:
-                    logger.debug("No MME conversion factor found for NDC: %s", cs.ndc_no_dashes)
+                    logger.debug(
+                        "No MME conversion factor found for NDC: %s", cs.ndc_no_dashes
+                    )
                 elif len(matching_strength_data) > 1:
                     logger.error(
-                        "Multiple matching strengths found for NDC: %s", cs.ndc_no_dashes
+                        "Multiple matching strengths found for NDC: %s",
+                        cs.ndc_no_dashes,
                     )
                     raise MmeError(
                         message="Multiple MME records found for NDC: "
@@ -719,13 +728,16 @@ class DataValidator:
                     cs.mme_conv_factor = matching_strength_data[0].mme_conversion_factor
                     progress_callback(method_name, 50)
                 else:
-                    unmatched_strength_records.append((cs.ndc_no_dashes, cs.cs_strength_mg))
+                    unmatched_strength_records.append(
+                        (cs.ndc_no_dashes, cs.cs_strength_mg)
+                    )
 
             # Check for missing MME factors on products requiring State-1 reporting
             missing_mme_for_ny = (
                 session.query(ControlledSubstanceMaster)
                 .filter(
-                    ControlledSubstanceMaster.include_in_ny_state_and_excise_tax_reports == "Y",
+                    ControlledSubstanceMaster.include_in_ny_state_and_excise_tax_reports
+                    == "Y",
                     ControlledSubstanceMaster.mme_conv_factor.is_(None),
                 )
                 .all()
@@ -758,7 +770,9 @@ class DataValidator:
             progress_callback(method_name, 100)
 
             if missing_mme_records:
-                logger.error("Missing MME conversion factors for NDCs: %s", missing_mme_records)
+                logger.error(
+                    "Missing MME conversion factors for NDCs: %s", missing_mme_records
+                )
                 raise MmeError(
                     message=(
                         "The MME conversion factor is required for New York "
@@ -767,7 +781,8 @@ class DataValidator:
                     user_message=(
                         "The MME conversion factor is required for all New York "
                         "opioid products and a match was not found for the following "
-                        "NDCs in the master catalog:\n\n" + "\n".join(missing_mme_records)
+                        "NDCs in the master catalog:\n\n"
+                        + "\n".join(missing_mme_records)
                     ),
                 )
         except MmeError as e:

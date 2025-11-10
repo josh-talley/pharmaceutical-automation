@@ -1,0 +1,15 @@
+{
+  "defaultMode": "plan",
+  "permissions": {
+    "ask": [
+      "Bash(git:*)",
+      "Bash(gh:*)",
+      "Edit"
+    ],
+    "deny": [
+      "Read(./.env*)",
+      "Read(./secrets/**)",
+      "Read(/Users/lightworks/**)"
+    ]
+  }
+}

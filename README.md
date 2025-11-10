@@ -12,7 +12,7 @@
 
 This repository showcases **core system designs** extracted from a production pharmaceutical compliance automation application. The full system processes controlled substance transaction data, performs multi-layer validation, and generates regulatory reports (ARCOS, DSCSA, state-level reporting) for DEA and state regulatory agencies.
 
-**Why this project matters:** In pharmaceutical compliance, errors have serious consequences - incorrect regulatory submissions can result in DEA violations, fines, or loss of controlled substance licenses. The production system has processed over **80,000+ controlled substance transactions** with **zero errors** over 1+ years of production use.
+**Why this project matters:** In pharmaceutical compliance, errors have serious consequences - incorrect regulatory submissions can result in DEA violations, fines, or loss of controlled substance licenses. The production system has processed over **20K+ controlled substance transactions** with **zero errors** over 1+ years of production use.
 
 ### What's Included
 
@@ -167,7 +167,7 @@ raise NdcValidationError(
 ### Verified Production Metrics
 - **Total runtime:** 1+ years in production (July 2023 - Present)
 - **Error rate:** **Zero errors** (zero failed transactions, zero data corruption)
-- **Transaction volume:** 20,000+ per quarter (80,000+ total)
+- **Transaction volume:** 20K+ per quarter
 - **Validation effectiveness:** 100% catch rate (catches issues before submission)
 - **Process improvement:** Reduced quarterly compliance reporting from 40 hours to 4 hours
 
@@ -376,7 +376,7 @@ Security+ Certified | Python Developer | Transitioning to SOC Operations
 
 **Background:**
 - Built production automation with **1+ years zero-error runtime**
-- Processed **80,000+ pharmaceutical transactions** with 100% accuracy
+- Processed **20K+ pharmaceutical transactions** with 100% accuracy
 - PCEP Certified Python Programmer (July 2023)
 - CompTIA Security+ (October 2025)
 - Building SOC-focused homelab (ELK stack processing 200K+ security events)

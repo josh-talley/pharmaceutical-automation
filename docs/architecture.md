@@ -703,6 +703,6 @@ This architecture demonstrates production-quality patterns for building reliable
 - **Responsive GUI** (worker threads + signals)
 - **User-friendly errors** (exception hierarchy)
 
-...has resulted in a system with 1+ years in production of zero-error production runtime processing 80,000+ transactions.
+...has resulted in a system with 1+ years in production of zero-error production runtime processing 20K+ transactions.
 
 These patterns transfer directly to other domains requiring reliability, validation, and automation - including SOC operations, where validating inputs, logging everything, and failing safely are critical skills.
