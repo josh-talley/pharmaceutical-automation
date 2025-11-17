@@ -379,7 +379,7 @@ Security+ Certified | Python Developer | Transitioning to SOC Operations
 - Processed **20K+ pharmaceutical transactions** with 100% accuracy
 - PCEP Certified Python Programmer (July 2023)
 - CompTIA Security+ (October 2025)
-- Building SOC-focused homelab (ELK stack processing 200K+ security events)
+- Building SOC-focused homelab (ELK stack processing 2.2M security events - 95% noise reduction from 44M)
 
 **Seeking:** SOC Analyst Tier 1 roles where I can apply automation, validation, and reliability engineering skills to security operations.
 

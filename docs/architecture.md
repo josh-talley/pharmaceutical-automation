@@ -591,7 +591,7 @@ with trans_mgmt.transaction() as session:
 - Perfect for desktop application
 - User imports data once per quarter
 - Reporting is read-only (no write contention)
-- 200K+ records perform well
+- 20K+ records perform well
 
 ### Why Manual Foreign Key Validation?
 
