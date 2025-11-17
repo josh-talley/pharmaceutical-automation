@@ -2,7 +2,7 @@
 
 **Production-grade Python systems extracted from a commercial pharmaceutical compliance application.**
 
-> **Production Metrics:** 1+ years in production | 20,000+ transactions quarterly | **Zero errors** in production runtime
+> **Production Metrics:** 1+ years in production | 20,000+ transactions processed | **Zero errors** in production runtime
 
 > **Note:** State identifiers have been anonymized for client confidentiality.
 
